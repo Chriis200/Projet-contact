@@ -1,6 +1,6 @@
 # Projet-contact
 
 
-CRIQUELION Julien
-LEDUC Christophe
+CRIQUELION Julien,
+LEDUC Christophe,
 VINTER Louis
