@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+  <head>
+    <title>Liste des contacts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      .page{
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+      }
+      .contact{
+        display:flex;
+        flex-direction:row;
+      }
+      .deconnexion{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="contact">
+        <div th:switch="${contacts}">
+          <h2 th:case="null">Aucun contact!</h2>
+          <div th:case="*">
+            <h2>Contacts</h2>
+            <table>
+              <thead>
+              <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="contact : ${contacts}">
+                <td th:text="${contact.firstName}"></td>
+                <td th:text="${contact.lastName}"></td>
+                <td><a th:href="@{/edit/{id}(id=${contact.id})}">Modifier</a></td>
+                <td><a th:href="@{/delete/{id}(id=${contact.id})}">Supprimer</a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><a href="/add">Ajouter un nouvel utilisateur</a></p>
+        </div>
+      </div>
+      <div class="deconnexion">
+        <h1 th:inline="text">Bienvenue <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        <form th:action="@{/logout}" method="post">
+          <input type="submit" value="Se déconnecter"/>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+

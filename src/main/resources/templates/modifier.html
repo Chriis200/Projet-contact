@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifier un contact</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form th:action="@{/edit}" th:object="${contact}" method="post" class="form-example">
+        <input style="display:none;" type="text" th:field="*{id}" id="id">
+        <label for="firstName">Prénom</label>
+        <input type="text" th:field="*{firstName}" id="firstName">
+        <label for="lastName">Nom</label>
+        <input type="text" th:field="*{lastName}" id="lastName">
+        <input type="submit" value="Modifier">
+    </form>
+</body>
+</html>
