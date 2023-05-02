@@ -23,10 +23,6 @@ class ContactApiController {
     public void operationsContacts(@RequestParam(name = "action") String action,
                              @RequestParam(name = "id", required = false) Long id,
                              HttpServletResponse response) {
-        /*
-        contactRepo.save(new Contact("jean", "dupont"));
-        contactRepo.save(new Contact("jean", "jacques"));
-        contactRepo.save(new Contact("tom", "dupre"));*/
 
         if (action.equals("listContacts")) {
             response.setContentType("application/xml");
